@@ -12,7 +12,7 @@ const method1 = (exp) => {
 console.log("output :",method1("(3+2)*7/2-5"))
 
 
-// Question 1: solving a expression without eval()
+// Question 2: solving a expression without eval()
 
 // input: "3+2*7/2-5"
 // output:
