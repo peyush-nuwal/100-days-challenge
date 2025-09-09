@@ -22,11 +22,8 @@ const solver = (str) => {
             currentStr=str+currentStr.repeat(repeatCount)
         } else {
              currentStr+=ch
-        }
-        
+        } 
     }
-
-
     return currentStr
 }
 
