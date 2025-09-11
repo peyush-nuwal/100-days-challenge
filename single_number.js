@@ -13,4 +13,6 @@ const findNum = (arr) => {
     }
 }
 
+
+
 console.log(findNum([1,1,1,0,0,0,8]))
