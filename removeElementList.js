@@ -41,7 +41,8 @@ function removeElement(head, target) {
 
   while (current.next) {
     if (current.next.val === target) {
-      current.next = current.next.next; // skip the node
+        current.next = current.next.next; // skip the node
+      
     } else {
       current = current.next;
     }
