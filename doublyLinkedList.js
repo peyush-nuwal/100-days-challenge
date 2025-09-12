@@ -92,7 +92,47 @@ class LinkedList {
       this.length--;
       return removedNode
     }
+   
+    deleteByIndex(idx) {
+          if (idx < 0 || idx >= this.length) return undefined;
 
+          let count = 0;
+          let current = this.head;
+          let deleteNode;
+         while (current) {
+           if (count === idx) {
+             deleteNode = current;
+
+             // Case 1: Deleting head
+             if (current === this.head) {
+               this.head = current.next
+               if(this.head) this.head.prev=null
+            }
+             // Case 2: Deleting tail
+             else if (current === this.tail) {
+               this.tail = current.prev;
+               if (this.tail) this.tail.next = null;
+             }
+             // Case 3: Middle node
+             else {
+               current.prev.next = current.next;
+               current.next.prev = current.prev;
+             }
+
+             // Cleanup
+             current.next = null;
+             current.prev = null;
+
+             this.length--;
+             break;
+           }
+
+           current = current.next;
+           count++;
+         }
+
+         return deleteNode;
+    }
   // Print entire list in "a->b->c" format
   printList() {
     let current = this.head;
@@ -125,3 +165,7 @@ console.log("After add(5):", list.printList()); // 0->1->2->3->5
 
 list.unShift()
 console.log("After unshift():", list.printList()); // 1->2->3->5
+
+
+list.deleteByIndex(1)
+console.log("After deleteByIndex():", list.printList()); // 1->2->3->5
