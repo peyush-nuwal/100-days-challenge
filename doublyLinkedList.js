@@ -74,6 +74,24 @@ class LinkedList {
     this.length--;
     return poppedNode; // return removed node
   }
+    // Remove from start
+    unShift() {
+      if (this.length === 0) return undefined;
+
+        let removedNode = this.head;
+        
+      if (this.length === 1) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = removedNode.next;
+        this.head.prev = null;
+        removedNode.next = null;
+      }
+
+      this.length--;
+      return removedNode
+    }
 
   // Print entire list in "a->b->c" format
   printList() {
@@ -104,3 +122,6 @@ console.log("After pop():", list.printList()); // 0->1->2->3
 
 list.add(5); // Add at end again
 console.log("After add(5):", list.printList()); // 0->1->2->3->5
+
+list.unShift()
+console.log("After unshift():", list.printList()); // 1->2->3->5
