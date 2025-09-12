@@ -50,6 +50,25 @@ class LinkedList{
         return res.join("->")       
     }
     
+    pop() {
+         if (this.length === 0) return undefined;
+
+        let poppedNode = this.tail;
+        
+           if (this.length === 1) {
+             // only one node
+             this.head = null;
+             this.tail = null;
+           } else {
+             this.tail = poppedNode.prev;
+             this.tail.next = null;
+             poppedNode.prev = null; // break reference
+        }
+        
+        
+    this.length--;
+    return poppedNode;
+    }
     
 }
 
@@ -60,3 +79,5 @@ console.log("adding element", list.add(3));
 console.log("adding element", list.add(4));
 
 console.log("list",list.printList())
+console.log("list",list.pop())
+console.log("after deleting",list.printList())
