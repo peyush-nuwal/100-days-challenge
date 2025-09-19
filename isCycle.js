@@ -15,9 +15,9 @@
  */
 
 
-function ListNode(val) {
-    this.val = val
-    this.next=null
+function ListNode(val,next) {
+     this.val = (val===undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
 
 }
 
@@ -40,7 +40,7 @@ list.next=new ListNode(2)
 list.next.next = new ListNode(3);
 list.next.next.next = new ListNode(4);
 list.next.next.next = new ListNode(5);
-list.next.next.next.next = list.next 
+// list.next.next.next.next = list.next 
  
 
 const isCycle = (head) => {
@@ -59,4 +59,29 @@ const isCycle = (head) => {
 
 
 
-console.log("is cycle :",isCycle(list))
+// console.log("is cycle :",isCycle(list))
+
+var rotateRight = function(head, k) {
+  if (!head) return head
+  let length = 1;
+  let dummy=head
+  while (dummy.next) {
+    dummy = dummy.next
+    length++
+  }
+
+  let position = k % length
+  if (position===0) return head
+  let current= head
+  for (let i = 0; i < length - position - 1; i++){
+      current=current.next    
+  }
+ 
+  let newHead = current.next
+  current.next = null
+  dummy.next = head
+  return newHead
+
+};
+
+console.log("calling ",rotateRight(list,2))
