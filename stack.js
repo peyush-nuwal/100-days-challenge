@@ -53,18 +53,29 @@ class Stack {
     }
     return arr;
   }
+   minVal() {
+ 
+     let current = this.start;
+     let minVal=current.val
+    while (current) {
+      minVal = Math.min(minVal, current.val);
+      current = current.next;
+    }
+    return minVal;
+}
 }
 
 // Demo
-const stack = new Stack();
+export const stack = new Stack();
 stack.push(10);
 stack.push(20);
 stack.push(30);
 
-console.log("Top:", stack.peek()); // 30
-console.log("Stack:", stack.toArray()); // [30, 20, 10]
-console.log("Pop:", stack.pop()); // 30
-console.log("Size:", stack.size()); // 2
-console.log("Is empty?", stack.isEmpty()); // false
-stack.clear();
-console.log("After clear:", stack.isEmpty()); // true
+// console.log("Top:", stack.peek()); // 30
+// console.log("Stack:", stack.toArray()); // [30, 20, 10]
+// console.log("Pop:", stack.pop()); // 30
+// console.log("Size:", stack.size()); // 2
+// console.log("Is empty?", stack.isEmpty()); // false
+// stack.clear();
+// console.log("After clear:", stack.isEmpty()); // true
+console.log("min val", stack.minVal());
