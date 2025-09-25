@@ -14,7 +14,7 @@ class Tree {
   insert(val) {
     const newNode = new Node(val);
 
-    if (this.root===null) {
+    if (this.root === null) {
       this.root = newNode;
       return this;
     }
@@ -41,6 +41,22 @@ class Tree {
       }
     }
   }
+
+  includes(target) {
+    if (this.root === null) return undefined;
+    let current = this.root;
+    while (current) {
+      if (current.val === target) {
+        return true;
+      } else if (current.val > target) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+
+    return false;
+  }
 }
 
 const bst = new Tree();
@@ -53,3 +69,6 @@ bst.insert(6);
 bst.insert(8);
 bst.insert(1);
 console.log(bst);
+
+console.log("finding 3", bst.includes(3));
+console.log("finding 7", bst.includes(7));
