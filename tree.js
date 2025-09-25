@@ -78,6 +78,20 @@ class Tree {
     console.log(`${target} not found in the tree ❌`);
     return false;
   }
+
+  inOrder() {
+    const res = []
+    
+    const traversal = (node)=> {
+      if (!node) return; 
+      
+      traversal(node.left)
+      res.push(node.val)
+      traversal(node.right)
+    }
+    traversal(this.root)
+    return res
+  }
 }
 
 // ----------------------
@@ -113,3 +127,7 @@ bst.includes(7); // should log "Not found"
 //            3   6
 //             \    \
 //              4    8
+
+
+// inorder traversal 
+ console.log(bst.inOrder());
