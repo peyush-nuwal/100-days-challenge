@@ -53,3 +53,40 @@ console.log(allfed([1, 1, 1, 0, 0, 0], [0, 0, 0, 1, 1, 1])); // Expected: 0
 console.log(allfed([1, 0, 1, 0], [0, 1, 0, 1])); // Expected: 0
 console.log(allfed([1, 0, 0, 1], [0, 0, 1, 1])); // Expected: 0
 console.log(allfed([1, 1, 1], [0, 0, 0])); // Expected: 3
+
+
+
+
+
+
+/**
+ * Optimized O(n) solution
+ * Instead of simulating the queue, just count student preferences.
+ */
+
+const allfedOptimized = (students, sandwiches) => {
+    let count0 = students.filter(s => s === 0).length; // students who want circular
+    let count1 = students.length - count0;             // students who want square
+
+    for (let i = 0; i < sandwiches.length; i++) {
+        if (sandwiches[i] === 0) {
+            if (count0 === 0) return count1; // nobody wants this sandwich
+            count0--;
+        } else {
+            if (count1 === 0) return count0; // nobody wants this sandwich
+            count1--;
+        }
+    }
+
+    return 0; // all fed
+};
+
+
+// --------------------- TEST CASES ---------------------
+
+console.log(allfedOptimized([1,1,0,0,0,1], [0,0,0,1,1,1])); // Expected: 3
+console.log(allfedOptimized([1,1,0,0], [0,1,0,1]));         // Expected: 0
+console.log(allfedOptimized([1,1,1,0,0,0], [0,0,0,1,1,1])); // Expected: 0
+console.log(allfedOptimized([1,0,1,0], [0,1,0,1]));         // Expected: 0
+console.log(allfedOptimized([1,0,0,1], [0,0,1,1]));         // Expected: 0
+console.log(allfedOptimized([1,1,1], [0,0,0]));             // Expected: 3
