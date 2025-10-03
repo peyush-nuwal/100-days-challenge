@@ -48,6 +48,8 @@ const method2 = (exp) => {
             ope=current
             digi = 0
         }
+
+        
         
     }
 
