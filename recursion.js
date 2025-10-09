@@ -20,3 +20,12 @@ const fib = (n) => {
 }
 
 console.log(fib(6)); // 8
+
+
+function countdown(n) {
+  console.log("count",n)
+  if(n===0)return 0
+  return countdown(n-1)
+}
+
+countdown(5)
