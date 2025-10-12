@@ -26,6 +26,20 @@ class Graph {
 
     return this; // 💪 lets you chain more operations
   }
+    
+    
+    // Remove edges 
+    removeEdge(vtx1, vtx2) {
+     if (this.adjacencyList[vtx1] && this.adjacencyList[vtx2]) {
+       this.adjacencyList[vtx1] = this.adjacencyList[vtx1].filter(
+         (v) => v !== vtx2
+       );
+       this.adjacencyList[vtx2] = this.adjacencyList[vtx2].filter(
+         (v) => v !== vtx1
+       );
+     }
+     return this; 
+    } 
 }
 
 const g = new Graph()
@@ -34,4 +48,10 @@ console.log("Adding vertex a to list =>",g.addVertex("a"))
 console.log("Adding vertex a to list =>",g.addVertex("b"))
 console.log("Adding vertex a to list =>",g.addVertex("c"))
 console.log("Adding vertex a to list =>",g.addVertex("d"))
-console.log("After adding a to list=>",g)
+console.log("After adding a to list=>", g)
+g.addEdge("a","b")
+g.addEdge("b","c")
+g.addEdge("c","d")
+g.addEdge("d", "a")
+console.log("After adding conntecting all vertexs in list=>", g);
+console.log("Remove connection between a and b =>", g.removeEdge("a","b"));
