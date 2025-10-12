@@ -40,6 +40,17 @@ class Graph {
      }
      return this; 
     } 
+
+    removeVertex(vtx) {
+        if (!this.adjacencyList[vtx]) return undefined 
+
+        for (let neighbor of this.adjacencyList[vtx]) {
+            this.adjacencyList[neighbor]=this.adjacencyList[neighbor].filter(v=>v!==vtx)
+        }
+        delete this.adjacencyList[vtx]
+
+        return this
+    }
 }
 
 const g = new Graph()
@@ -54,4 +65,5 @@ g.addEdge("b","c")
 g.addEdge("c","d")
 g.addEdge("d", "a")
 console.log("After adding conntecting all vertexs in list=>", g);
-console.log("Remove connection between a and b =>", g.removeEdge("a","b"));
+console.log("Remove connection between a and b =>", g.removeEdge("a", "b"));
+console.log("deleting d from list =>",g.removeVertex("d"))
