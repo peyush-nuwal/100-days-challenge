@@ -26,31 +26,49 @@ class Graph {
 
     return this; // 💪 lets you chain more operations
   }
-    
-    
-    // Remove edges 
-    removeEdge(vtx1, vtx2) {
-     if (this.adjacencyList[vtx1] && this.adjacencyList[vtx2]) {
-       this.adjacencyList[vtx1] = this.adjacencyList[vtx1].filter(
-         (v) => v !== vtx2
-       );
-       this.adjacencyList[vtx2] = this.adjacencyList[vtx2].filter(
-         (v) => v !== vtx1
-       );
-     }
-     return this; 
-    } 
 
-    removeVertex(vtx) {
-        if (!this.adjacencyList[vtx]) return undefined 
-
-        for (let neighbor of this.adjacencyList[vtx]) {
-            this.adjacencyList[neighbor]=this.adjacencyList[neighbor].filter(v=>v!==vtx)
-        }
-        delete this.adjacencyList[vtx]
-
-        return this
+  // Remove edges
+  removeEdge(vtx1, vtx2) {
+    if (this.adjacencyList[vtx1] && this.adjacencyList[vtx2]) {
+      this.adjacencyList[vtx1] = this.adjacencyList[vtx1].filter(
+        (v) => v !== vtx2
+      );
+      this.adjacencyList[vtx2] = this.adjacencyList[vtx2].filter(
+        (v) => v !== vtx1
+      );
     }
+    return this;
+  }
+
+  // Removing vertex
+  removeVertex(vtx) {
+    if (!this.adjacencyList[vtx]) return undefined;
+
+    for (let neighbor of this.adjacencyList[vtx]) {
+      this.adjacencyList[neighbor] = this.adjacencyList[neighbor].filter(
+        (v) => v !== vtx
+      );
+    }
+    delete this.adjacencyList[vtx];
+
+    return this;
+  }
+
+  // Checking if edge exist between vertexs
+  hasEdge(vtx1, vtx2) {
+    return (
+      this.adjacencyList[vtx1]?.includes(vtx2) &&
+      this.adjacencyList[vtx2]?.includes(vtx1)
+    );
+  }
+
+    // Print graph
+  printGraph() {
+    for (let vertex in this.adjacencyList) {
+      console.log(`${vertex} -> ${this.adjacencyList[vertex].join(", ")}`);
+    }
+    return this;
+  }
 }
 
 const g = new Graph()
