@@ -72,16 +72,19 @@ class Graph {
 }
 
 const g = new Graph()
-console.log("Empty graph =>", g)
-console.log("Adding vertex a to list =>",g.addVertex("a"))
-console.log("Adding vertex a to list =>",g.addVertex("b"))
-console.log("Adding vertex a to list =>",g.addVertex("c"))
-console.log("Adding vertex a to list =>",g.addVertex("d"))
-console.log("After adding a to list=>", g)
-g.addEdge("a","b")
-g.addEdge("b","c")
-g.addEdge("c","d")
-g.addEdge("d", "a")
-console.log("After adding conntecting all vertexs in list=>", g);
-console.log("Remove connection between a and b =>", g.removeEdge("a", "b"));
-console.log("deleting d from list =>",g.removeVertex("d"))
+// console.log("Empty graph =>", g)
+// console.log("Adding vertex a to list =>",g.addVertex("a"))
+// console.log("Adding vertex a to list =>",g.addVertex("b"))
+// console.log("Adding vertex a to list =>",g.addVertex("c"))
+// console.log("Adding vertex a to list =>",g.addVertex("d"))
+// console.log("After adding a to list=>", g)
+// g.addEdge("a","b")
+// g.addEdge("b","c")
+// g.addEdge("c","d")
+// g.addEdge("d", "a")
+// console.log("After adding conntecting all vertexs in list=>", g);
+// console.log("Remove connection between a and b =>", g.removeEdge("a", "b"));
+// console.log("deleting d from list =>", g.removeVertex("d"))
+
+
+module.exports = Graph;
