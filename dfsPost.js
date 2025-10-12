@@ -27,4 +27,22 @@ const dfsPost = (root, res = []) => {
   return res;
 };
 
-console.log(dfsPost(root));
+// console.log(dfsPost(root));
+
+
+const dfsSet = (root) => {
+    if (!root) return []
+    let queue=[]
+    const res=[]
+     let node = root
+ 
+    if (node.left) dfsSet(node.left);
+    if (node.right) dfsSet(node.right);
+    queue.push(node.val)
+       res.push(queue);
+       queue = [];
+return res
+}
+
+
+console.log(dfsSet(root))
