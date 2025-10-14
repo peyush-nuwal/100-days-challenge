@@ -67,7 +67,7 @@ const uniqueMorseCodes = (words) => {
     for (let i = 0; i < word.length; i++) {
       converted += morseCode[word[i].charCodeAt() - 97];
     }
-    uniqueCodes.add(converted); // ✅ Add to set
+    uniqueCodes.add(converted); 
   }
   return uniqueCodes.size;
 };
